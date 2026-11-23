@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /contact/success
+
+Sitemap: https://saidigitalagency.netlify.app/sitemap.xml

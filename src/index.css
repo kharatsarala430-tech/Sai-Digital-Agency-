@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+  --font-sans: "DM Sans", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+
+  /* Official SAI Digital Agency Logo Palette */
+  --color-brand-navy: #091D42;
+  --color-brand-navy-deep: #06132B;
+  --color-brand-blue: #0066FF;
+  --color-brand-cobalt: #0044CC;
+  --color-brand-sky: #00A8FF;
+  --color-brand-ice: #F4F8FF;
+  --color-brand-ice-border: #DCE9FF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: #091D42;
+    background-color: #ffffff;
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  button, a, input, select, textarea {
+    outline-color: #0066FF;
+  }
+}
+
+/* Subtle brand gradient utilities grounded directly in the SAI logo */
+.sai-brand-gradient {
+  background-image: linear-gradient(135deg, #00A8FF 0%, #0066FF 52%, #0044CC 100%);
+}
+
+.sai-navy-gradient {
+  background-image: linear-gradient(135deg, #091D42 0%, #0D2A5E 55%, #06132B 100%);
+}
+
+.sai-hero-backdrop {
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(60% 55% at 88% 12%, rgba(0, 168, 255, 0.11) 0%, rgba(0, 102, 255, 0.04) 48%, transparent 100%),
+    radial-gradient(45% 45% at 8% 88%, rgba(0, 102, 255, 0.06) 0%, transparent 100%);
+}
+
+@keyframes sai-float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes sai-sheen {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(8px, -6px, 0) scale(1.03);
+  }
+}
+
+.sai-animate-float {
+  animation: sai-float-slow 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.sai-animate-float-delayed {
+  animation: sai-float-slow 7.5s ease-in-out 1.4s infinite;
+  will-change: transform;
+}
+
+.sai-animate-sheen {
+  animation: sai-sheen 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .sai-animate-float,
+  .sai-animate-float-delayed,
+  .sai-animate-sheen {
+    animation: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
